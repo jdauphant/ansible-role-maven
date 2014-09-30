@@ -1,0 +1,3 @@
+---
+maven_pkg_state: present # present or latest
+maven_proxies: []

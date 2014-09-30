@@ -1,0 +1,14 @@
+---
+- name: install maven for Debian OS family
+  apt: pkg=maven state={{ maven_pkg_state }}
+  when: ansible_os_family == 'Debian'
+  tags: ["packages","maven"]
+
+- name: install maven for RedHat OS family
+  yum: name=maven state={{ maven_pkg_state }}
+  when: ansible_os_family == 'RedHat'
+  tags: ["packages","maven"]
+
+- name: configure maven
+  template: src=settings.xml.j2 dest={{maven_conf_dir}}/settings.xml
+  tags: ["configuration","maven"]
